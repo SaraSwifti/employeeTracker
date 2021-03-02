@@ -10,7 +10,7 @@ const connection = mysql.createConnection({
     user: 'root',
   
     // Be sure to update with your own MySQL password!
-    password: 'SaraSwifti!12',
+    password: process.env.mysqlpw,
     database: 'employ_trackdb',
   });
   
