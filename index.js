@@ -10,11 +10,14 @@ const connection = mysql.createConnection({
     user: 'root',
   
     // Be sure to update with your own MySQL password!
-    password: process.env.mysqlpw,
-    database: 'employ_trackdb',
+    password: 'SaraSwifti!12',
+    database: 'employees_db'
   });
   
   connection.connect((err) => {
-    if (err) throw err;
-    runSearch();
+    if (err) {
+      console.error('error connecting')
+    }
+    console.log(`connected as id ${connection.threadId}`);
+    //runSearch();
   });
