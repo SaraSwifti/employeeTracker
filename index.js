@@ -38,7 +38,7 @@ function firstMenu() {
       type: 'list',
       message: 'What would you like to do?',
       name: 'menu',
-      choices: ['Add a Department', 'Add a Role', 'Add an Employee', 'View a Department', 'View Roles', 'View Employees', 'Update Employee role', 'Finished']
+      choices: ['Add a Department', 'Add a Role', 'Add an Employee', 'View Departments', 'View Roles', 'View Employees', 'Update Employee role', 'Finished']
     }
   ]).then(function (response) {
     if (response.menu === 'Add a Department') {
@@ -47,16 +47,18 @@ function firstMenu() {
       addRole();
     } else if (response.menu === 'Add an Employee') {
       addEmploy();
-    } else if (response.menu === 'View a Department') {
+    } else if (response.menu === 'View Departments') {
       viewDept();
     } else if (response.menu === 'View Roles') {
       viewRoles();
     } else if (response.menu === 'View Employees') {
       viewEmploy();
-    } else if (responses.menu === 'Update Employee role') {
+    } else if (response.menu === 'Update Employee role') {
       updateEmploy();
     } else {
-      console.log('Please log in again to interact with the Employee database')
+      console.log('Please log in again to interact with the Employee database');
+      connection.end();
+      process.exit();
     };
 
   });
@@ -71,7 +73,7 @@ const addDepartment = () => {
       message: 'What is the name of the department you want to add?',
     },
   ]).then(function (response) {
-    const query = "INSERT INTO department (name) VALUES (?)";
+    let query = "INSERT INTO department (name) VALUES (?)";
     connection.query(
       query,
       response.department,
@@ -89,6 +91,20 @@ const addDepartment = () => {
     );
   });
 }
+// view Department function
 
+function viewDept() {
+  let query = "SELECT * FROM department";
+  connection.query(query, function (err, res) {
+    console.log(`DEPARTMENTS:`)
+    console.table(res);
+    firstMenu();
+  });
+  
+};
 
+///function update employee
+function updateEmploy() {
+
+}
 firstMenu();
