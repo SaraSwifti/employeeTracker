@@ -2,6 +2,8 @@ const mysql = require('mysql');
 const inquirer = require('inquirer');
 const express = require('express');
 const app = express();
+//use this if I do the separate files and import?  const Add = require("./db/add.js");
+
 //setting up express to use data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -59,4 +61,34 @@ function firstMenu() {
 
   });
 };
+
+const addDepartment = () => {
+
+  inquirer.prompt([
+    {
+      type: 'input',
+      name: 'department',
+      message: 'What is the name of the department you want to add?',
+    },
+  ]).then(function (response) {
+    const query = "INSERT INTO department (name) VALUES (?)";
+    connection.query(
+      query,
+      response.department,
+      (err, res) => {
+        if (err) throw err;
+        console.log(`The ${(response.department).toUpperCase()} department has been added`)
+        // {connection.query(
+        //     'INSERT INTO department'
+        // )
+        //     console.log(`Adding ${response.name} to department catagory`)
+        // }
+
+        firstMenu();
+      }
+    );
+  });
+}
+
+
 firstMenu();

@@ -9,7 +9,7 @@ const addDepartment = () => {
             name: 'name',
             message: 'What is the name of the department you want to add?',
         },
-    ]).then(response) {
+    ]).then(function (response) {
         app.post('/', (req, res) => {
             console.log(`You sent, ${req.response.name}`);
         });
@@ -20,11 +20,11 @@ const addDepartment = () => {
         // }
 
         firstMenu();
-    };
+    });
 };
 // function for adding a role
 
-function addRole (){
+function addRole() {
 
     inquirer.prompt([
         {
@@ -44,7 +44,7 @@ function addRole (){
             choices: ['Engineer', 'Intern', 'Finished'],
         }
 
-    ]).then(responses => {
+    ]).then(function(response){
 
         //now to choice menu for adding another empoloyee or exiting the funciton. 
         firstMenu();
@@ -70,7 +70,7 @@ function addEmploy() {
             choices: ['Engineer', 'Intern', 'Finished'],
         }
 
-    ]).then(responses => {
+    ]).then(function(response){
 
         //now to choice menu for adding another empoloyee or exiting the funciton. 
         firstMenu();
@@ -81,4 +81,4 @@ function addEmploy() {
 
 
 //export needed modules
-module.exports = Employee;
+module.exports = addDepartment;
