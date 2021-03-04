@@ -93,7 +93,7 @@ function viewDept() {
 function viewRoles() {
   connection.query("SELECT * from role", function (error, res) {
     console.table(res);
-    endOrMenu();
+    firstMenu();
   })
 };
 
@@ -157,7 +157,7 @@ function aaddRole(data) {
   connection.query("INSERT INTO role SET ?", {
     title: data.title,
     salary: data.salary,
-    department_id: response.id
+    department_id: data.id
   }, function (error, res) {
     // console.log(error, res);
     if (error) throw error;
