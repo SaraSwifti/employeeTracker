@@ -114,16 +114,16 @@ function addDepartment() {
     },
   ]).then(function (response) {
     let query = "INSERT INTO department (name) VALUES (?)";
-  connection.query(
-    query,
-    response.department,
-    (err, res) => {
-      if (err) throw err;
-      console.log(`The ${(response.department).toUpperCase()} department has been added`)
+    connection.query(
+      query,
+      response.department,
+      (err, res) => {
+        if (err) throw err;
+        console.log(`The ${(response.department).toUpperCase()} department has been added`)
 
-      firstMenu();
-    }
-  );
+        firstMenu();
+      }
+    );
   });
 };
 
@@ -209,34 +209,35 @@ function aaddEmploy(data) {
   firstMenu();
 };
 
+///function update employee role
+function updateEmploy() {
+  
+    //need to find out which employee's role needs to be updated
+    inquirer.prompt([
+      {
+        type: 'list',
+        message: 'For Which employee would you like to update the role?',
+        name: 'menu',
+        //need to put a function here that will retrieve the employees and print them out as a choice
+        choices: showemployees
+      }
+    ]).then(function (response) {
+      aupdateEmploy(response);
 
-// ///function update employee role
-// function updateEmploy() {
-//   connection.query('SELECT * FROM employee', function(err, res) {
-//     if (err) throw (err);
-//   //need to find out which employee's role needs to be updated
-//   inquirer.prompt([
-//     {
-//       type: 'list',
-//       message: 'Which employee role would you like to update?',
-//       name: 'menu',
-//       //need to put a function here that will retrieve the employees and print them out as a choice
-//       choices: res.map(function(nam) {
-// return nam.
-//       })
+    });
+  }
 
-//       function() {
-//         employeeArray = [];
 
-//            res.map(res => {
-//                employeeArray.push(
-//                    res.last_name
-//                );
-//            })
-//            return employeeArray;
-//          }
-//     }
-//   ]).then
-// });
+//catches data from inquirer response for employeeRole update
+
+function aupdateEmploy(data) {
+  connection.query(`UPDATE employee SET role_id = ${data.titleID} WHERE id = ${data.empID}`,
+    function (error, res) {
+      // console.log(error, res);
+      if (error) throw error;
+    });
+  firstMenu();
+}
+
 
 firstMenu();
