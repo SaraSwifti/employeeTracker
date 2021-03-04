@@ -1,5 +1,5 @@
 # employeeTracker
-![Video Link](https://drive.google.com/file/d/1p2-SBPum7r0dBfHtS5xhk6bxsXwWqgoA/view)
+[Video Link](https://drive.google.com/file/d/1p2-SBPum7r0dBfHtS5xhk6bxsXwWqgoA/view)
 
 # Unit 12 MySQL Homework: Employee Tracker
 
