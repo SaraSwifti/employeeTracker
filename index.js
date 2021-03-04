@@ -113,12 +113,7 @@ function addDepartment() {
       message: 'What is the name of the department you want to add?',
     },
   ]).then(function (response) {
-    addDept(response);
-  });
-};
-
-function addDept() {
-  let query = "INSERT INTO department (name) VALUES (?)";
+    let query = "INSERT INTO department (name) VALUES (?)";
   connection.query(
     query,
     response.department,
@@ -129,6 +124,7 @@ function addDept() {
       firstMenu();
     }
   );
+  });
 };
 
 
@@ -148,8 +144,8 @@ function addRole() {
     {
       type: 'list',
       message: 'Which department is this new role in?',
-      name: 'menu',
-      choices: ['Engineer', 'Intern', 'Finished'],
+      name: 'id',
+      choices: showdepartments
     }
   ]).then(function (response) {
 
@@ -157,19 +153,18 @@ function addRole() {
   });
 };
 
-function aaddRole() {
+function aaddRole(data) {
   connection.query("INSERT INTO role SET ?", {
-    title: response.title,
-    salary: response.salary,
+    title: data.title,
+    salary: data.salary,
     department_id: response.id
   }, function (error, res) {
     // console.log(error, res);
     if (error) throw error;
     firstMenu();
   });
-
-
 };
+
 //function for adding an Employee
 function addEmploy() {
   inquirer.prompt([
@@ -201,13 +196,13 @@ function addEmploy() {
 };
 
 // add Employ
-function aaddEmploy() {
+function aaddEmploy(data) {
   connection.query("INSERT INTO employee SET ?",
     {
-      first_name: response.firstName,
-      last_name: response.lastName,
-      role_id: response.title,
-      manager_id: response.manager
+      first_name: data.firstName,
+      last_name: data.lastName,
+      role_id: data.title,
+      manager_id: data.manager
     }, function (error, res) {
       if (error) throw error;
     });
