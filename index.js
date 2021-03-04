@@ -217,10 +217,17 @@ function updateEmploy() {
       {
         type: 'list',
         message: 'For Which employee would you like to update the role?',
-        name: 'menu',
+        name: 'empId',
         //need to put a function here that will retrieve the employees and print them out as a choice
         choices: showemployees
+      },
+      {
+        type: "list",
+        message: "What is the employee's new role?",
+        name: "titleId",
+        choices: showroles
       }
+
     ]).then(function (response) {
       aupdateEmploy(response);
 
@@ -231,9 +238,9 @@ function updateEmploy() {
 //catches data from inquirer response for employeeRole update
 
 function aupdateEmploy(data) {
-  connection.query(`UPDATE employee SET role_id = ${data.titleID} WHERE id = ${data.empID}`,
+  connection.query(`UPDATE employee SET role_id = ${data.titleId} WHERE id = ${data.empId}`,
     function (error, res) {
-      // console.log(error, res);
+       console.log('Employee role has been updated');
       if (error) throw error;
     });
   firstMenu();
