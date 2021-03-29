@@ -1,5 +1,6 @@
-# employeeTracker
-[Video Link](https://drive.google.com/file/d/1p2-SBPum7r0dBfHtS5xhk6bxsXwWqgoA/view)
+# employeeTracker <br/>
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) <br/>
+[Video Link to video of functioning app](https://drive.google.com/file/d/1p2-SBPum7r0dBfHtS5xhk6bxsXwWqgoA/view)
 
 # Description
 
@@ -17,7 +18,7 @@ Express
 Inquirer
 console.table
 
-## Acceptance Criteria
+## Usage and Acceptance Criteria
 ```
   As a business owner
 I want to be able to view and manage the departments, roles, and employees in my company
@@ -31,17 +32,9 @@ Build a command-line application that at a minimum allows the user to:
 
   * Update employee roles
 
-Bonus points if you're able to:
+## Goal with this assignment
 
-  * Update employee managers
-
-  * View employees by manager
-
-  * Delete departments, roles, and employees
-
-  * View the total utilized budget of a department -- ie the combined salaries of all employees in that department
-
-
+I was personally encouraged that I was able to figure out the question menu flow by breaking up the inquirer promtps and calling funcitons for menus depending on responses. 
 
 
 - - -
